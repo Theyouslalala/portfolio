@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -21,14 +20,12 @@ export default function App() {
 
   return (
     <>
-      <div className={`loading-screen ${loading ? '' : 'hidden'}`}>
-        <motion.div
-          animate={{ rotate: 360 }}
-          transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
-          className="w-10 h-10 border-3 border-primary-200 border-t-primary-500 rounded-full"
-        />
-        <p className="mt-4 text-sm text-slate-400">Loading...</p>
-      </div>
+      {loading && (
+        <div className="loading-screen">
+          <div className="w-10 h-10 border-3 border-primary-200 border-t-primary-500 rounded-full animate-spin" />
+          <p className="mt-4 text-sm text-slate-400">Loading...</p>
+        </div>
+      )}
 
       <Navbar />
       <Hero />

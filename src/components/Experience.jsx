@@ -29,43 +29,44 @@ function TimelineItem({ item, icon: Icon, color, index }) {
   )
 }
 
+function Timeline({ items, icon, color }) {
+  return (
+    <div className="relative">
+      <div className="absolute left-6 md:left-7 top-0 bottom-0 w-0.5 bg-slate-200" />
+      <div className="space-y-8">
+        {items.map((item, i) => (
+          <TimelineItem
+            key={item.title}
+            item={item}
+            icon={icon}
+            color={color}
+            index={i}
+          />
+        ))}
+      </div>
+    </div>
+  )
+}
+
 export default function Experience() {
   return (
     <section id="experience" className="py-24 px-6 bg-white">
       <div className="max-w-4xl mx-auto">
         <SectionHeading title="教育" accent="经历" subtitle="我的学习历程" />
-
-        <div className="relative mb-20">
-          <div className="absolute left-6 md:left-7 top-0 bottom-0 w-0.5 bg-slate-200" />
-          <div className="space-y-8">
-            {educations.map((edu, i) => (
-              <TimelineItem
-                key={edu.title}
-                item={edu}
-                icon={GraduationCap}
-                color={{ bg: 'bg-primary-50', text: 'text-primary-500' }}
-                index={i}
-              />
-            ))}
-          </div>
+        <div className="mb-20">
+          <Timeline
+            items={educations}
+            icon={GraduationCap}
+            color={{ bg: 'bg-primary-50', text: 'text-primary-500' }}
+          />
         </div>
 
         <SectionHeading title="科研" accent="经历" subtitle="我的研究与项目" />
-
-        <div className="relative">
-          <div className="absolute left-6 md:left-7 top-0 bottom-0 w-0.5 bg-slate-200" />
-          <div className="space-y-8">
-            {researches.map((res, i) => (
-              <TimelineItem
-                key={res.title}
-                item={res}
-                icon={FlaskConical}
-                color={{ bg: 'bg-violet-50', text: 'text-violet-500' }}
-                index={i}
-              />
-            ))}
-          </div>
-        </div>
+        <Timeline
+          items={researches}
+          icon={FlaskConical}
+          color={{ bg: 'bg-violet-50', text: 'text-violet-500' }}
+        />
       </div>
     </section>
   )

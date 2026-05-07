@@ -18,6 +18,7 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const rafRef = useRef(null)
   const scrolledRef = useRef(false)
+  const activeSectionRef = useRef('hero')
   const navRef = useRef(null)
 
   useEffect(() => {
@@ -34,7 +35,10 @@ export default function Navbar() {
         for (let i = sections.length - 1; i >= 0; i--) {
           const el = document.getElementById(sections[i])
           if (el && el.getBoundingClientRect().top <= 150) {
-            setActiveSection(sections[i])
+            if (activeSectionRef.current !== sections[i]) {
+              activeSectionRef.current = sections[i]
+              setActiveSection(sections[i])
+            }
             break
           }
         }
