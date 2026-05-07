@@ -1,12 +1,12 @@
 // 在这里修改你的个人信息，所有内容都会自动更新到网站上
 
 export const personalInfo = {
-  name: "王宇涵",
+  name: "Theyous",
   title: "计算机科学学生",
   tagline: "热爱编程，追求创新",
   avatar: "", // 放入 public/avatar.png 后填写 "/avatar.png"
   email: "your-email@example.com",
-  github: "https://github.com/yourusername",
+  github: "https://github.com/theyouslalala",
   location: "中国",
 }
 
@@ -15,10 +15,16 @@ export const about = {
   我热爱探索新技术，喜欢用代码解决实际问题。
   在学习过程中，我积累了丰富的项目经验，并持续提升自己的技术能力。`,
   education: {
-    school: "你的大学名称",
+    school: "广东工业大学",
     major: "计算机科学与技术",
     degree: "本科",
     period: "2022 - 2026",
+  },
+    education: {
+    school: "西安电子科技大学",
+    major: "电子信息",
+    degree: "硕士",
+    period: "2026 - 2029",
   },
 }
 
@@ -64,9 +70,15 @@ export const experiences = [
   {
     type: "education",
     title: "计算机科学与技术 · 本科",
-    org: "你的大学名称",
+    org: "广东工业大学",
     period: "2022 - 2026",
     description: "主修数据结构、算法设计、操作系统、计算机网络等课程，GPA 3.8/4.0",
+  },
+  {
+    type: "education",
+    title: "电子信息 · 硕士",
+    org: "西安电子科技大学",
+    period: "2026 - 2029",
   },
   {
     type: "intern",
@@ -77,15 +89,15 @@ export const experiences = [
   },
   {
     type: "award",
-    title: "蓝桥杯程序设计大赛 · 省一等奖",
+    title: "蓝桥杯程序设计大赛 · 省二等奖",
     org: "蓝桥杯组委会",
     period: "2024",
-    description: "在全国软件和信息技术专业人才大赛中获得省级一等奖。",
+    description: "在全国软件和信息技术专业人才大赛中获得省级二等奖。",
   },
 ]
 
 export const contact = {
   email: "your-email@example.com",
-  github: "https://github.com/yourusername",
+  github: "https://github.com/theyouslalala",
   wechat: "your-wechat-id",
 }
