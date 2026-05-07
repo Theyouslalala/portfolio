@@ -1,7 +1,7 @@
 // 在这里修改你的个人信息，所有内容都会自动更新到网站上
 
 export const personalInfo = {
-  name: "王宇涵",
+  name: "Wangyuhan",
   title: "电子信息硕士 · AI4S 方向",
   tagline: "深耕 AI for Science，以深度学习求解复杂物理方程",
   avatar: "",
