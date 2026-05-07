@@ -1,6 +1,15 @@
 import { motion } from 'framer-motion'
-import { ChevronDown, Github, Mail } from 'lucide-react'
+import { ChevronDown, Github, Mail, Sparkles } from 'lucide-react'
 import { personalInfo } from '../data/portfolio'
+
+const particles = Array.from({ length: 20 }, (_, i) => ({
+  id: i,
+  x: Math.random() * 100,
+  y: Math.random() * 100,
+  size: Math.random() * 4 + 2,
+  delay: Math.random() * 5,
+  duration: Math.random() * 10 + 15,
+}))
 
 export default function Hero() {
   return (
@@ -8,51 +17,49 @@ export default function Hero() {
       id="hero"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500">
+      <div className="absolute inset-0 bg-gradient-to-br from-indigo-600 via-violet-600 to-fuchsia-500">
         <motion.div
-          animate={{
-            x: [0, 100, -50, 0],
-            y: [0, -80, 60, 0],
-            scale: [1, 1.2, 0.9, 1],
-          }}
+          animate={{ x: [0, 120, -60, 0], y: [0, -100, 80, 0], scale: [1, 1.3, 0.85, 1] }}
           transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute top-1/4 left-1/4 w-72 h-72 bg-white/10 rounded-full blur-3xl"
+          className="absolute top-1/4 left-1/4 w-96 h-96 bg-white/[0.07] rounded-full blur-3xl"
         />
         <motion.div
-          animate={{
-            x: [0, -80, 60, 0],
-            y: [0, 100, -40, 0],
-            scale: [1, 0.8, 1.1, 1],
-          }}
+          animate={{ x: [0, -100, 80, 0], y: [0, 120, -60, 0], scale: [1, 0.8, 1.15, 1] }}
           transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-pink-400/20 rounded-full blur-3xl"
+          className="absolute bottom-1/4 right-1/4 w-[28rem] h-[28rem] bg-fuchsia-400/15 rounded-full blur-3xl"
         />
         <motion.div
-          animate={{
-            x: [0, 60, -100, 0],
-            y: [0, -60, 80, 0],
-          }}
+          animate={{ x: [0, 80, -120, 0], y: [0, -80, 100, 0] }}
           transition={{ duration: 25, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute top-1/2 right-1/3 w-64 h-64 bg-cyan-400/15 rounded-full blur-3xl"
+          className="absolute top-1/2 right-1/3 w-80 h-80 bg-cyan-400/10 rounded-full blur-3xl"
         />
+        {particles.map(p => (
+          <motion.div
+            key={p.id}
+            className="absolute rounded-full bg-white/20"
+            style={{ left: `${p.x}%`, top: `${p.y}%`, width: p.size, height: p.size }}
+            animate={{ y: [0, -30, 0], opacity: [0.2, 0.6, 0.2] }}
+            transition={{ duration: p.duration, repeat: Infinity, delay: p.delay, ease: 'easeInOut' }}
+          />
+        ))}
       </div>
 
-      <div className="relative z-10 text-center text-white px-6">
+      <div className="relative z-10 text-center text-white px-6 max-w-3xl">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/10 mb-8"
         >
-          <p className="text-lg md:text-xl text-white/70 mb-4 font-light tracking-wider">
-            Hello, I'm
-          </p>
+          <Sparkles size={14} />
+          <span className="text-sm font-medium tracking-wide">AI for Science · 深度学习 · 大语言模型</span>
         </motion.div>
 
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6"
+          className="text-5xl md:text-7xl lg:text-8xl font-extrabold mb-6 tracking-tight"
         >
           {personalInfo.name}
         </motion.h1>
@@ -70,7 +77,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-base md:text-lg text-white/60 mb-10 max-w-lg mx-auto"
+          className="text-base md:text-lg text-white/55 mb-12 max-w-xl mx-auto leading-relaxed"
         >
           {personalInfo.tagline}
         </motion.p>
@@ -83,23 +90,23 @@ export default function Hero() {
         >
           <a
             href="#projects"
-            className="px-8 py-3 bg-white text-primary-600 rounded-full font-semibold hover:shadow-lg hover:shadow-white/25 transition-all duration-300 hover:-translate-y-0.5"
+            className="px-8 py-3.5 bg-white text-violet-700 rounded-full font-semibold hover:shadow-xl hover:shadow-white/20 transition-all duration-300 hover:-translate-y-0.5 text-sm"
           >
-            查看作品
+            查看项目
           </a>
           <a
             href={personalInfo.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="p-3 border border-white/30 rounded-full hover:bg-white/10 transition-all duration-300"
+            className="p-3.5 border border-white/25 rounded-full hover:bg-white/10 transition-all duration-300"
           >
-            <Github size={22} />
+            <Github size={20} />
           </a>
           <a
             href={`mailto:${personalInfo.email}`}
-            className="p-3 border border-white/30 rounded-full hover:bg-white/10 transition-all duration-300"
+            className="p-3.5 border border-white/25 rounded-full hover:bg-white/10 transition-all duration-300"
           >
-            <Mail size={22} />
+            <Mail size={20} />
           </a>
         </motion.div>
       </div>
@@ -108,7 +115,7 @@ export default function Hero() {
         href="#about"
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/50 hover:text-white transition-colors"
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/40 hover:text-white transition-colors"
       >
         <ChevronDown size={28} />
       </motion.a>

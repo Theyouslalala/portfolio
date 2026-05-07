@@ -3,15 +3,15 @@ import { skills } from '../data/portfolio'
 import SectionHeading from './SectionHeading'
 
 const categoryColors = {
-  '前端': 'from-blue-500 to-cyan-400',
-  '后端': 'from-green-500 to-emerald-400',
-  '工具': 'from-orange-500 to-amber-400',
+  '编程语言': 'from-blue-500 to-cyan-400',
+  'AI / 框架': 'from-violet-500 to-purple-400',
+  '开发工具': 'from-orange-500 to-amber-400',
 }
 
 const categoryBg = {
-  '前端': 'bg-blue-50 text-blue-600',
-  '后端': 'bg-green-50 text-green-600',
-  '工具': 'bg-orange-50 text-orange-600',
+  '编程语言': 'bg-blue-50 text-blue-600',
+  'AI / 框架': 'bg-violet-50 text-violet-600',
+  '开发工具': 'bg-orange-50 text-orange-600',
 }
 
 const categories = [...new Set(skills.map(s => s.category))]

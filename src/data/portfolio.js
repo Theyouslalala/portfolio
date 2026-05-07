@@ -1,101 +1,121 @@
 // 在这里修改你的个人信息，所有内容都会自动更新到网站上
 
 export const personalInfo = {
-  name: "Theyous",
-  title: "计算机科学学生",
-  tagline: "热爱编程，追求创新",
-  avatar: "", // 放入 public/avatar.png 后填写 "/avatar.png"
+  name: "王宇涵",
+  title: "电子信息硕士 · AI4S 方向",
+  tagline: "深耕 AI for Science，以深度学习求解复杂物理方程",
+  avatar: "",
   email: "your-email@example.com",
   github: "https://github.com/theyouslalala",
   location: "中国",
 }
 
 export const about = {
-  description: `我是一名计算机科学专业的在读学生，对软件开发充满热情。
-  我热爱探索新技术，喜欢用代码解决实际问题。
-  在学习过程中，我积累了丰富的项目经验，并持续提升自己的技术能力。`,
+  description: `我是西安电子科技大学电子信息专业硕士研究生（推免，211，双一流学科），本科毕业于广东工业大学计算机科学与技术专业（ESI 全球前 1‰）。
+
+研究方向聚焦 AI for Science (AI4S)，利用深度学习方法求解复杂偏微分方程，已在 SCI 期刊发表论文。
+
+同时热衷于 LLM 技术探索，完成从模型搭建到强化学习后训练的全链路实践。`,
   educations: [
     {
-      school: "广东工业大学",
-      major: "计算机科学与技术",
-      degree: "本科",
-      period: "2022 - 2026",
+      school: "西安电子科技大学",
+      major: "电子信息 · 硕士",
+      detail: "推免 · 211 · 双一流学科",
+      period: "2026.09 - 2029.06",
     },
     {
-      school: "西安电子科技大学",
-      major: "电子信息",
-      degree: "硕士",
-      period: "2026 - 2029",
+      school: "广东工业大学",
+      major: "计算机科学与技术 · 本科",
+      detail: "ESI 全球前 1‰ · GPA 4.12/5.00（专业前 5%）",
+      period: "2022.09 - 2026.06",
     },
   ],
 }
 
 export const skills = [
-  { name: "JavaScript", level: 85, category: "前端" },
-  { name: "React", level: 75, category: "前端" },
-  { name: "HTML/CSS", level: 90, category: "前端" },
-  { name: "Tailwind CSS", level: 80, category: "前端" },
-  { name: "Python", level: 85, category: "后端" },
-  { name: "Java", level: 70, category: "后端" },
-  { name: "Node.js", level: 70, category: "后端" },
-  { name: "MySQL", level: 75, category: "后端" },
-  { name: "Git", level: 80, category: "工具" },
-  { name: "Linux", level: 65, category: "工具" },
-  { name: "Docker", level: 60, category: "工具" },
+  { name: "Python", level: 90, category: "编程语言" },
+  { name: "C/C++", level: 85, category: "编程语言" },
+  { name: "JavaScript", level: 75, category: "编程语言" },
+  { name: "Java", level: 70, category: "编程语言" },
+  { name: "PyTorch", level: 88, category: "AI / 框架" },
+  { name: "Deep Learning", level: 85, category: "AI / 框架" },
+  { name: "LLM 训练", level: 80, category: "AI / 框架" },
+  { name: "LoRA / RLHF", level: 78, category: "AI / 框架" },
+  { name: "React", level: 70, category: "开发工具" },
+  { name: "Git", level: 80, category: "开发工具" },
+  { name: "Linux", level: 75, category: "开发工具" },
+  { name: "LaTeX", level: 85, category: "开发工具" },
 ]
 
 export const projects = [
   {
-    title: "在线商城系统",
-    description: "基于 React + Node.js 开发的全栈电商网站，支持用户注册、商品浏览、购物车和订单管理等功能。",
-    tags: ["React", "Node.js", "MySQL"],
-    link: "https://github.com/yourusername/project1",
+    title: "MiniMind — 轻量级大语言模型全链路复现",
+    description: "完成 LLM 从模型搭建、预训练、SFT 到 DPO/PPO/GRPO 后训练的全链路实现。基于 PyTorch Decoder-Only 架构，集成 RoPE、YaRN、KV Cache、GQA、SwiGLU 等技术。扩展为 4-Experts MoE 架构（总参 198M / 激活 64M），引入负载均衡缓解专家塌缩。",
+    tags: ["PyTorch", "LLM", "MoE", "RLHF", "LoRA"],
+    link: "https://github.com/theyouslalala",
     image: "",
+    period: "2026.03 - 至今",
   },
   {
-    title: "智能聊天机器人",
-    description: "使用 Python 和自然语言处理技术开发的聊天机器人，能够理解用户意图并给出智能回复。",
-    tags: ["Python", "NLP", "Flask"],
-    link: "https://github.com/yourusername/project2",
+    title: "AI4S — 深度学习求解偏微分方程",
+    description: "提出 ES-ScaDNN 框架，利用能量泛函直接优化求解 Allen-Cahn 方程，精度提升 67.2%。设计缩放层与方差正则化项确保解的物理意义。参与 EM-NormResNet 模型设计，用于玻色-爱因斯坦凝聚基态问题求解。",
+    tags: ["AI4S", "PDE", "Energy Method", "DNN"],
+    link: "https://github.com/theyouslalala",
     image: "",
-  },
-  {
-    title: "校园二手交易平台",
-    description: "移动端二手物品交易小程序，支持发布商品、在线沟通和交易评价功能。",
-    tags: ["微信小程序", "云开发"],
-    link: "https://github.com/yourusername/project3",
-    image: "",
+    period: "2024.12 - 至今",
   },
 ]
 
 export const experiences = [
   {
+    type: "research",
+    title: "国家级大创项目：深度学习求解偏微分方程",
+    org: "广东工业大学 · 主持",
+    period: "2024.12 - 至今",
+    description: "提出 ES-ScaDNN 框架，创新融合能量泛函与方差约束，Allen-Cahn 方程求解精度提升 67.2%。已发表 SCI 论文 2 篇。",
+  },
+  {
+    type: "education",
+    title: "电子信息 · 硕士研究生",
+    org: "西安电子科技大学",
+    period: "2026.09 - 2029.06",
+    description: "推免入学，211、双一流学科，研究方向为 AI for Science。",
+  },
+  {
     type: "education",
     title: "计算机科学与技术 · 本科",
     org: "广东工业大学",
-    period: "2022 - 2026",
-    description: "主修数据结构、算法设计、操作系统、计算机网络等课程，GPA 3.8/4.0",
+    period: "2022.09 - 2026.06",
+    description: "GPA 4.12/5.00（专业前 5%），ESI 全球前 1‰。获国家奖学金、一等奖学金等。",
+  },
+]
+
+export const publications = [
+  {
+    role: "学生一作",
+    title: "基于能量最小化的深度学习框架求解 Allen-Cahn 方程",
+    journal: "Axioms（SCI · 中科院 3 区）",
+    brief: "提出 ES-ScaDNN 框架，设计缩放层与方差正则化项，直接优化能量泛函求解相场方程。",
   },
   {
-    type: "education",
-    title: "电子信息 · 硕士",
-    org: "西安电子科技大学",
-    period: "2026 - 2029",
+    role: "第三作者",
+    title: "能量最小化归一化残差网络求解玻色-爱因斯坦凝聚基态",
+    journal: "Chinese Physics B（SCI · 中科院 3 区）",
+    brief: "提出 EM-NormResNet 方法，集成归一化技术与梯度稳定化残差网络，提升量子系统模拟精度。",
   },
-  {
-    type: "intern",
-    title: "前端开发实习生",
-    org: "某某科技公司",
-    period: "2025.06 - 2025.09",
-    description: "参与公司内部管理系统的前端开发，使用 React + Ant Design 实现多个业务模块。",
-  },
-  {
-    type: "award",
-    title: "蓝桥杯程序设计大赛 · 省二等奖",
-    org: "蓝桥杯组委会",
-    period: "2024",
-    description: "在全国软件和信息技术专业人才大赛中获得省级二等奖。",
-  },
+]
+
+export const honors = [
+  { title: "本科生国家奖学金", year: "2025" },
+  { title: "美国大学生数学建模竞赛 Honorable Mention（队长）", year: "2025, 2024" },
+  { title: "全国大学生统计建模竞赛 广东赛区一等奖 / 国家三等奖", year: "2025" },
+  { title: "全国大学生统计建模竞赛 广东赛区二等奖（队长）", year: "2024" },
+  { title: "全国大学生数学建模竞赛 广东赛区二等奖（队长）", year: "2024, 2023" },
+  { title: "蓝桥杯 C/C++ 省赛二等奖", year: "2025, 2024" },
+  { title: "睿抗机器人开发者大赛 广东省三等奖", year: "2025, 2024" },
+  { title: "全国大学生数学竞赛 初赛三等奖", year: "2023" },
+  { title: "校优秀学生一等奖学金", year: "2025, 2023" },
+  { title: "揭阳市大学生科技创新精英奖", year: "2024" },
 ]
 
 export const contact = {

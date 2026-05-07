@@ -11,5 +11,17 @@ body {
 }
 
 ::selection {
-  @apply bg-primary-400/30;
+  @apply bg-violet-400/30;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-slate-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-300 rounded-full hover:bg-slate-400 transition-colors;
 }

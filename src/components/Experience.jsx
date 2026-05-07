@@ -1,10 +1,11 @@
 import { motion } from 'framer-motion'
-import { GraduationCap, Briefcase, Award } from 'lucide-react'
+import { GraduationCap, Briefcase, Award, FlaskConical } from 'lucide-react'
 import { experiences } from '../data/portfolio'
 import SectionHeading from './SectionHeading'
 
 const typeConfig = {
   education: { icon: GraduationCap, bg: 'bg-primary-50', text: 'text-primary-500' },
+  research: { icon: FlaskConical, bg: 'bg-violet-50', text: 'text-violet-500' },
   intern: { icon: Briefcase, bg: 'bg-green-50', text: 'text-green-500' },
   award: { icon: Award, bg: 'bg-orange-50', text: 'text-accent-500' },
 }

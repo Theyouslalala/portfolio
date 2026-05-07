@@ -4,10 +4,12 @@ import { Menu, X } from 'lucide-react'
 
 const navItems = [
   { name: '首页', href: '#hero' },
-  { name: '关于我', href: '#about' },
+  { name: '关于', href: '#about' },
   { name: '技能', href: '#skills' },
   { name: '项目', href: '#projects' },
+  { name: '论文', href: '#publications' },
   { name: '经历', href: '#experience' },
+  { name: '荣誉', href: '#honors' },
   { name: '联系', href: '#contact' },
 ]
 
@@ -48,23 +50,23 @@ export default function Navbar() {
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-white/80 backdrop-blur-lg shadow-sm'
+          ? 'bg-white/80 backdrop-blur-xl shadow-sm border-b border-slate-100/50'
           : 'bg-transparent'
       }`}
     >
-      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="#hero" className="text-xl font-bold bg-gradient-to-r from-primary-500 to-purple-500 bg-clip-text text-transparent">
-          Portfolio
+      <div className="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
+        <a href="#hero" className="text-lg font-extrabold bg-gradient-to-r from-primary-500 to-violet-500 bg-clip-text text-transparent">
+          WYH
         </a>
 
-        <ul className="hidden md:flex items-center gap-1">
+        <ul className="hidden lg:flex items-center gap-0.5">
           {navItems.map(item => (
             <li key={item.href}>
               <a
                 href={item.href}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                className={`px-3 py-1.5 rounded-full text-sm font-medium transition-all duration-200 ${
                   activeSection === item.href.slice(1)
-                    ? 'bg-primary-500 text-white shadow-md shadow-primary-500/25'
+                    ? 'bg-primary-500 text-white shadow-md shadow-primary-500/20'
                     : 'text-slate-600 hover:text-primary-500 hover:bg-primary-50'
                 }`}
               >
@@ -76,9 +78,9 @@ export default function Navbar() {
 
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden p-2 rounded-lg hover:bg-slate-100 transition-colors"
+          className="lg:hidden p-2 rounded-lg hover:bg-slate-100 transition-colors"
         >
-          {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+          {mobileOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>
 
@@ -86,14 +88,14 @@ export default function Navbar() {
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="md:hidden bg-white/95 backdrop-blur-lg border-t border-slate-100 px-6 pb-4"
+          className="lg:hidden bg-white/95 backdrop-blur-xl border-t border-slate-100 px-6 pb-4"
         >
           {navItems.map(item => (
             <a
               key={item.href}
               href={item.href}
               onClick={() => setMobileOpen(false)}
-              className={`block py-3 text-sm font-medium transition-colors ${
+              className={`block py-2.5 text-sm font-medium transition-colors ${
                 activeSection === item.href.slice(1)
                   ? 'text-primary-500'
                   : 'text-slate-600'
