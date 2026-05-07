@@ -6,10 +6,9 @@ import SectionHeading from './SectionHeading'
 function TimelineItem({ item, icon: Icon, color, index }) {
   return (
     <motion.div
-      key={item.title}
       initial={{ opacity: 0, x: -30 }}
       whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true, margin: '-50px' }}
+      viewport={{ once: true, margin: '-80px' }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       className="relative flex gap-6"
     >

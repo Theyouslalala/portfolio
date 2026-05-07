@@ -1,24 +1,42 @@
+import { useState, useEffect } from 'react'
+import { motion } from 'framer-motion'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
-import Skills from './components/Skills'
+import Experience from './components/Experience'
 import Projects from './components/Projects'
 import Publications from './components/Publications'
-import Experience from './components/Experience'
+import Skills from './components/Skills'
 import Honors from './components/Honors'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 
 export default function App() {
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 1200)
+    return () => clearTimeout(timer)
+  }, [])
+
   return (
     <>
+      <div className={`loading-screen ${loading ? '' : 'hidden'}`}>
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
+          className="w-10 h-10 border-3 border-primary-200 border-t-primary-500 rounded-full"
+        />
+        <p className="mt-4 text-sm text-slate-400">Loading...</p>
+      </div>
+
       <Navbar />
       <Hero />
       <About />
-      <Skills />
+      <Experience />
       <Projects />
       <Publications />
-      <Experience />
+      <Skills />
       <Honors />
       <Contact />
       <Footer />

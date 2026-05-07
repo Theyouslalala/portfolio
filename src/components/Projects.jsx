@@ -14,7 +14,7 @@ const tagColors = [
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-24 px-6 bg-white">
+    <section id="projects" className="py-24 px-6 bg-slate-50">
       <div className="max-w-6xl mx-auto">
         <SectionHeading title="项目" accent="经历" subtitle="代表性项目与研究工作" />
 
@@ -24,7 +24,7 @@ export default function Projects() {
               key={project.title}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-50px' }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
               whileHover={{ y: -6 }}
               className="group bg-white rounded-3xl border border-slate-100 overflow-hidden hover:shadow-xl hover:shadow-primary-500/5 transition-all duration-300 flex flex-col"
@@ -49,11 +49,9 @@ export default function Projects() {
               </div>
 
               <div className="p-6 flex-1 flex flex-col">
-                <div className="flex items-center justify-between gap-2 mb-3">
-                  <h3 className="text-lg font-bold text-slate-800 group-hover:text-primary-600 transition-colors leading-snug">
-                    {project.title}
-                  </h3>
-                </div>
+                <h3 className="text-lg font-bold text-slate-800 mb-2 group-hover:text-primary-600 transition-colors leading-snug">
+                  {project.title}
+                </h3>
                 {project.period && (
                   <div className="flex items-center gap-1.5 text-xs text-slate-400 mb-3">
                     <Clock size={12} />

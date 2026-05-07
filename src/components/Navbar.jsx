@@ -1,14 +1,13 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, Languages } from 'lucide-react'
 
 const navItems = [
-  { name: '首页', href: '#hero' },
   { name: '关于', href: '#about' },
-  { name: '技能', href: '#skills' },
+  { name: '经历', href: '#experience' },
   { name: '项目', href: '#projects' },
   { name: '论文', href: '#publications' },
-  { name: '经历', href: '#experience' },
+  { name: '技能', href: '#skills' },
   { name: '荣誉', href: '#honors' },
   { name: '联系', href: '#contact' },
 ]
@@ -18,15 +17,20 @@ export default function Navbar() {
   const [activeSection, setActiveSection] = useState('hero')
   const [mobileOpen, setMobileOpen] = useState(false)
   const rafRef = useRef(null)
+  const scrolledRef = useRef(false)
+  const navRef = useRef(null)
 
   useEffect(() => {
     const handleScroll = () => {
       if (rafRef.current) return
       rafRef.current = requestAnimationFrame(() => {
         const isScrolled = window.scrollY > 50
-        if (scrolled !== isScrolled) setScrolled(isScrolled)
+        if (scrolledRef.current !== isScrolled) {
+          scrolledRef.current = isScrolled
+          setScrolled(isScrolled)
+        }
 
-        const sections = navItems.map(i => i.href.slice(1))
+        const sections = ['hero', ...navItems.map(i => i.href.slice(1))]
         for (let i = sections.length - 1; i >= 0; i--) {
           const el = document.getElementById(sections[i])
           if (el && el.getBoundingClientRect().top <= 150) {
@@ -42,10 +46,22 @@ export default function Navbar() {
       window.removeEventListener('scroll', handleScroll)
       if (rafRef.current) cancelAnimationFrame(rafRef.current)
     }
-  }, [scrolled])
+  }, [])
+
+  useEffect(() => {
+    if (!mobileOpen) return
+    const handleClick = (e) => {
+      if (navRef.current && !navRef.current.contains(e.target)) {
+        setMobileOpen(false)
+      }
+    }
+    document.addEventListener('click', handleClick)
+    return () => document.removeEventListener('click', handleClick)
+  }, [mobileOpen])
 
   return (
     <motion.nav
+      ref={navRef}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -74,10 +90,19 @@ export default function Navbar() {
               </a>
             </li>
           ))}
+          <li>
+            <button
+              className="ml-2 px-3 py-1.5 rounded-full text-sm font-medium text-slate-400 hover:text-primary-500 hover:bg-primary-50 transition-all duration-200 flex items-center gap-1"
+              title="English (coming soon)"
+            >
+              <Languages size={15} />
+              <span className="text-xs">EN</span>
+            </button>
+          </li>
         </ul>
 
         <button
-          onClick={() => setMobileOpen(!mobileOpen)}
+          onClick={(e) => { e.stopPropagation(); setMobileOpen(!mobileOpen) }}
           className="lg:hidden p-2 rounded-lg hover:bg-slate-100 transition-colors"
         >
           {mobileOpen ? <X size={20} /> : <Menu size={20} />}

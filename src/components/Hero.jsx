@@ -4,11 +4,11 @@ import { personalInfo } from '../data/portfolio'
 
 const particles = Array.from({ length: 20 }, (_, i) => ({
   id: i,
-  x: Math.random() * 100,
-  y: Math.random() * 100,
-  size: Math.random() * 4 + 2,
-  delay: Math.random() * 5,
-  duration: Math.random() * 10 + 15,
+  x: (i * 37 + 13) % 100,
+  y: (i * 53 + 7) % 100,
+  size: (i % 4) + 2,
+  delay: (i * 0.3) % 5,
+  duration: 15 + (i % 10),
 }))
 
 export default function Hero() {
@@ -59,7 +59,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-5xl md:text-7xl lg:text-8xl font-extrabold mb-6 tracking-tight"
+          className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold mb-6 tracking-tight"
         >
           {personalInfo.name}
         </motion.h1>
@@ -68,7 +68,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-xl md:text-2xl text-white/80 mb-4 font-light"
+          className="text-lg sm:text-xl md:text-2xl text-white/80 mb-4 font-light"
         >
           {personalInfo.title}
         </motion.p>
@@ -77,7 +77,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-base md:text-lg text-white/55 mb-12 max-w-xl mx-auto leading-relaxed"
+          className="text-sm sm:text-base md:text-lg text-white/55 mb-12 max-w-xl mx-auto leading-relaxed"
         >
           {personalInfo.tagline}
         </motion.p>
@@ -119,6 +119,8 @@ export default function Hero() {
       >
         <ChevronDown size={28} />
       </motion.a>
+
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent pointer-events-none" />
     </section>
   )
 }

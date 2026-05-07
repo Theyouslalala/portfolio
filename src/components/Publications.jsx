@@ -10,7 +10,7 @@ const roleColors = {
 
 export default function Publications() {
   return (
-    <section id="publications" className="py-24 px-6">
+    <section id="publications" className="py-24 px-6 bg-slate-50">
       <div className="max-w-4xl mx-auto">
         <SectionHeading title="学术" accent="论文" subtitle="已发表的 SCI 期刊论文" />
 
@@ -20,7 +20,7 @@ export default function Publications() {
               key={i}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-50px' }}
+              viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
               className="group relative bg-white rounded-2xl border border-slate-100 p-6 hover:shadow-lg hover:shadow-primary-500/5 hover:border-primary-100 transition-all duration-300"
             >
