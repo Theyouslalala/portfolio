@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { Mail, Github, MessageCircle } from 'lucide-react'
 import { contact } from '../data/portfolio'
+import SectionHeading from './SectionHeading'
 
 const links = [
   {
@@ -30,26 +31,12 @@ export default function Contact() {
   return (
     <section id="contact" className="py-24 px-6">
       <div className="max-w-4xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            联系<span className="bg-gradient-to-r from-primary-500 to-purple-500 bg-clip-text text-transparent">我</span>
-          </h2>
-          <p className="text-slate-500 text-lg">欢迎与我交流，期待你的来信</p>
-        </motion.div>
+        <SectionHeading title="联系" accent="我" subtitle="欢迎与我交流，期待你的来信" />
 
         <div className="grid sm:grid-cols-3 gap-6">
           {links.map((link, i) => {
             const Icon = link.icon
-            const Wrapper = link.href ? 'a' : 'div'
-            const wrapperProps = link.href
-              ? { href: link.href, target: '_blank', rel: 'noopener noreferrer' }
-              : {}
+            const cardClass = "group block p-6 bg-white rounded-3xl border border-slate-100 hover:shadow-xl hover:shadow-primary-500/5 transition-all duration-300 text-center hover:-translate-y-1"
 
             return (
               <motion.div
@@ -59,18 +46,32 @@ export default function Contact() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
               >
-                <Wrapper
-                  {...wrapperProps}
-                  className="group block p-6 bg-white rounded-3xl border border-slate-100 hover:shadow-xl hover:shadow-primary-500/5 transition-all duration-300 text-center hover:-translate-y-1"
-                >
-                  <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-br ${link.color} mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                    <Icon className="text-white" size={28} />
+                {link.href ? (
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={cardClass}
+                  >
+                    <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-br ${link.color} mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                      <Icon className="text-white" size={28} />
+                    </div>
+                    <p className="text-sm text-slate-500 mb-1">{link.label}</p>
+                    <p className="font-semibold text-slate-800 group-hover:text-primary-500 transition-colors break-all">
+                      {link.value}
+                    </p>
+                  </a>
+                ) : (
+                  <div className={cardClass}>
+                    <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-br ${link.color} mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                      <Icon className="text-white" size={28} />
+                    </div>
+                    <p className="text-sm text-slate-500 mb-1">{link.label}</p>
+                    <p className="font-semibold text-slate-800 group-hover:text-primary-500 transition-colors break-all">
+                      {link.value}
+                    </p>
                   </div>
-                  <p className="text-sm text-slate-500 mb-1">{link.label}</p>
-                  <p className="font-semibold text-slate-800 group-hover:text-primary-500 transition-colors break-all">
-                    {link.value}
-                  </p>
-                </Wrapper>
+                )}
               </motion.div>
             )
           })}

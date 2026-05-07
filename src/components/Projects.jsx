@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { ExternalLink, FolderGit2 } from 'lucide-react'
 import { projects } from '../data/portfolio'
+import SectionHeading from './SectionHeading'
 
 const tagColors = [
   'bg-blue-100 text-blue-700',
@@ -15,18 +16,7 @@ export default function Projects() {
   return (
     <section id="projects" className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            项目<span className="bg-gradient-to-r from-primary-500 to-purple-500 bg-clip-text text-transparent">作品</span>
-          </h2>
-          <p className="text-slate-500 text-lg">以下是我参与开发的一些项目</p>
-        </motion.div>
+        <SectionHeading title="项目" accent="作品" subtitle="以下是我参与开发的一些项目" />
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, i) => (
@@ -39,14 +29,12 @@ export default function Projects() {
               whileHover={{ y: -6 }}
               className="group bg-white rounded-3xl border border-slate-100 overflow-hidden hover:shadow-xl hover:shadow-primary-500/5 transition-all duration-300"
             >
-              {/* Project image / placeholder */}
               <div className="h-48 bg-gradient-to-br from-primary-100 to-purple-100 flex items-center justify-center relative overflow-hidden">
                 {project.image ? (
                   <img src={project.image} alt={project.title} className="w-full h-full object-cover" />
                 ) : (
                   <FolderGit2 size={48} className="text-primary-300" />
                 )}
-                {/* Hover overlay */}
                 <div className="absolute inset-0 bg-primary-500/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <a
                     href={project.link}
@@ -60,7 +48,6 @@ export default function Projects() {
                 </div>
               </div>
 
-              {/* Project info */}
               <div className="p-6">
                 <h3 className="text-xl font-bold text-slate-800 mb-2 group-hover:text-primary-600 transition-colors">
                   {project.title}

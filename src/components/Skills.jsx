@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { skills } from '../data/portfolio'
+import SectionHeading from './SectionHeading'
 
 const categoryColors = {
   '前端': 'from-blue-500 to-cyan-400',
@@ -13,24 +14,16 @@ const categoryBg = {
   '工具': 'bg-orange-50 text-orange-600',
 }
 
-export default function Skills() {
-  const categories = [...new Set(skills.map(s => s.category))]
+const categories = [...new Set(skills.map(s => s.category))]
+const skillsByCategory = Object.fromEntries(
+  categories.map(cat => [cat, skills.filter(s => s.category === cat)])
+)
 
+export default function Skills() {
   return (
     <section id="skills" className="py-24 px-6 bg-white">
       <div className="max-w-6xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            技术<span className="bg-gradient-to-r from-primary-500 to-purple-500 bg-clip-text text-transparent">技能</span>
-          </h2>
-          <p className="text-slate-500 text-lg">我在以下技术领域有开发经验</p>
-        </motion.div>
+        <SectionHeading title="技术" accent="技能" subtitle="我在以下技术领域有开发经验" />
 
         <div className="space-y-10">
           {categories.map((cat, ci) => (
@@ -47,9 +40,7 @@ export default function Skills() {
                 </span>
               </div>
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                {skills
-                  .filter(s => s.category === cat)
-                  .map((skill, i) => (
+                {skillsByCategory[cat].map((skill, i) => (
                     <motion.div
                       key={skill.name}
                       initial={{ opacity: 0, scale: 0.9 }}

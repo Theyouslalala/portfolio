@@ -14,18 +14,20 @@ export const about = {
   description: `我是一名计算机科学专业的在读学生，对软件开发充满热情。
   我热爱探索新技术，喜欢用代码解决实际问题。
   在学习过程中，我积累了丰富的项目经验，并持续提升自己的技术能力。`,
-  education: {
-    school: "广东工业大学",
-    major: "计算机科学与技术",
-    degree: "本科",
-    period: "2022 - 2026",
-  },
-    education: {
-    school: "西安电子科技大学",
-    major: "电子信息",
-    degree: "硕士",
-    period: "2026 - 2029",
-  },
+  educations: [
+    {
+      school: "广东工业大学",
+      major: "计算机科学与技术",
+      degree: "本科",
+      period: "2022 - 2026",
+    },
+    {
+      school: "西安电子科技大学",
+      major: "电子信息",
+      degree: "硕士",
+      period: "2026 - 2029",
+    },
+  ],
 }
 
 export const skills = [
@@ -97,7 +99,7 @@ export const experiences = [
 ]
 
 export const contact = {
-  email: "your-email@example.com",
-  github: "https://github.com/theyouslalala",
+  email: personalInfo.email,
+  github: personalInfo.github,
   wechat: "your-wechat-id",
 }

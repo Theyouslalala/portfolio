@@ -8,9 +8,7 @@ export default function Hero() {
       id="hero"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Animated gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500">
-        {/* Floating orbs */}
         <motion.div
           animate={{
             x: [0, 100, -50, 0],
@@ -39,7 +37,6 @@ export default function Hero() {
         />
       </div>
 
-      {/* Content */}
       <div className="relative z-10 text-center text-white px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -107,7 +104,6 @@ export default function Hero() {
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
       <motion.a
         href="#about"
         animate={{ y: [0, 10, 0] }}

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 
@@ -15,23 +15,32 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState('hero')
   const [mobileOpen, setMobileOpen] = useState(false)
+  const rafRef = useRef(null)
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50)
+      if (rafRef.current) return
+      rafRef.current = requestAnimationFrame(() => {
+        const isScrolled = window.scrollY > 50
+        if (scrolled !== isScrolled) setScrolled(isScrolled)
 
-      const sections = navItems.map(i => i.href.slice(1))
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const el = document.getElementById(sections[i])
-        if (el && el.getBoundingClientRect().top <= 150) {
-          setActiveSection(sections[i])
-          break
+        const sections = navItems.map(i => i.href.slice(1))
+        for (let i = sections.length - 1; i >= 0; i--) {
+          const el = document.getElementById(sections[i])
+          if (el && el.getBoundingClientRect().top <= 150) {
+            setActiveSection(sections[i])
+            break
+          }
         }
-      }
+        rafRef.current = null
+      })
     }
     window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      if (rafRef.current) cancelAnimationFrame(rafRef.current)
+    }
+  }, [scrolled])
 
   return (
     <motion.nav
@@ -48,7 +57,6 @@ export default function Navbar() {
           Portfolio
         </a>
 
-        {/* Desktop nav */}
         <ul className="hidden md:flex items-center gap-1">
           {navItems.map(item => (
             <li key={item.href}>
@@ -66,7 +74,6 @@ export default function Navbar() {
           ))}
         </ul>
 
-        {/* Mobile toggle */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
           className="md:hidden p-2 rounded-lg hover:bg-slate-100 transition-colors"
@@ -75,7 +82,6 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile menu */}
       {mobileOpen && (
         <motion.div
           initial={{ opacity: 0, y: -10 }}
