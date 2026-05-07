@@ -165,6 +165,21 @@ const handleScroll = () => {
 ### 修改颜色主题
 编辑 `tailwind.config.js` 中的 `colors.primary` 或 `colors.accent`。
 
+### 修改网站图标（Favicon）
+1. 在 `public/` 目录下放置 SVG 图标文件（推荐 SVG 格式，可缩放不失真）
+2. 在 `index.html` 中修改 `<link rel="icon">` 的 `href` 指向新文件
+3. SVG favicon 示例（圆角方块 + 字母）：
+```xml
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs><linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#6366F1"/><stop offset="100%" stop-color="#8B5CF6"/>
+  </linearGradient></defs>
+  <rect width="32" height="32" rx="8" fill="url(#bg)"/>
+  <text x="16" y="23" text-anchor="middle" font-weight="800" font-size="20" fill="white">W</text>
+</svg>
+```
+**知识点：** `viewBox="0 0 32 32"` 定义坐标系；`rx="8"` 圆角；SVG 内可使用 `<linearGradient>` 渐变。
+
 ### 修改全局样式
 编辑 `src/index.css`，其中包含：
 - `@tailwind base/components/utiliences` — Tailwind 基础样式

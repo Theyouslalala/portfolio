@@ -4,6 +4,17 @@
 
 ---
 
+## 2026-05-07 — 替换默认 Vite favicon 为自定义网站图标
+
+**Git:** `69ab152`
+
+### 修改内容
+- 创建 `public/favicon.svg`：紫蓝渐变圆角方块 + 白色 W 字母
+- `index.html` 引用从 `/vite.svg` 改为 `/favicon.svg`
+- 删除默认 `public/vite.svg`
+
+---
+
 ## 2026-05-07 — 全面优化：修复导航栏、动画、布局等多项问题
 
 **Git:** `b719238`
