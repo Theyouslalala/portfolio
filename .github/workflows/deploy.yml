@@ -18,7 +18,9 @@ jobs:
           cache: npm
 
       - run: npm ci
-      - run: npm run build
+
+      - name: Build with base path for GitHub Pages
+        run: npx vite build --base=/portfolio/
 
       - uses: peaceiris/actions-gh-pages@v4
         with:
