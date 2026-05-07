@@ -226,6 +226,53 @@ const scrolledRef = useRef(false)
 **原因：** Windows 使用 CRLF，Git 默认配置自动转换
 **影响：** 无实际影响，仅警告。如需消除可运行 `git config core.autocrlf true`
 
+### 6. 条件渲染 vs CSS 隐藏（React 性能）
+**现象：** 加载动画用 CSS class `hidden`（opacity: 0）隐藏后，framer-motion 的 `repeat: Infinity` 动画仍在后台运行
+**原因：** CSS 隐藏只是视觉上不可见，DOM 节点和 JS 动画仍然存在
+**解决：** 使用 React 条件渲染 `{loading && <div>...</div>}`，条件为 false 时彻底卸载组件
+**对比：**
+```jsx
+// ❌ 隐藏但动画持续运行
+<div className={loading ? '' : 'hidden'}><motion.div animate={{...}} /></div>
+
+// ✅ 彻底卸载，停止一切计算
+{loading && <div><div className="animate-spin" /></div>}
+```
+**知识点：** CSS 动画（`@keyframes`）在 `visibility: hidden` 时浏览器会暂停；但 framer-motion 使用 JS `requestAnimationFrame`，不感知 CSS 隐藏状态。
+
+### 7. 滚动事件中的 state 更新优化
+**现象：** `requestAnimationFrame` 回调中每帧调用 `setActiveSection`，即使值没变
+**原因：** 没有检查新值是否与旧值相同
+**解决：** 用 `useRef` 存储当前值，先比较再决定是否 setState
+```js
+const activeSectionRef = useRef('hero')
+// 在 RAF 回调中：
+if (activeSectionRef.current !== sections[i]) {
+  activeSectionRef.current = sections[i]
+  setActiveSection(sections[i])
+}
+```
+**知识点：** React 每次 `setState` 都会触发重新渲染（即使值相同），在高频事件（scroll、resize）中必须加变更检测。
+
+### 8. 提取子组件消除重复代码
+**场景：** Experience.jsx 中教育和科研两个时间线结构完全相同，只有数据源和颜色不同
+**解决：** 提取 `Timeline` 子组件，接收 `items`、`icon`、`color` 参数
+```jsx
+function Timeline({ items, icon, color }) {
+  return (
+    <div className="relative">
+      <div className="absolute left-6 md:left-7 top-0 bottom-0 w-0.5 bg-slate-200" />
+      <div className="space-y-8">
+        {items.map((item, i) => (
+          <TimelineItem key={item.title} item={item} icon={icon} color={color} index={i} />
+        ))}
+      </div>
+    </div>
+  )
+}
+```
+**知识点：** 当两段 JSX 只有数据源和少量参数不同时，提取子组件是最佳实践。保持 DRY（Don't Repeat Yourself）。
+
 ---
 
 ## 部署相关

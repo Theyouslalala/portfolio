@@ -4,6 +4,23 @@
 
 ---
 
+## 2026-05-07 — 代码审查修复：加载动画、滚动检测、时间线去重
+
+**Git:** `47fa296`
+
+### 修改内容
+1. **加载动画优化** — App.jsx：从 CSS class 切换改为条件渲染 `{loading && (...)}`，加载完成后彻底卸载 DOM；spinner 从 framer-motion 改为 CSS `animate-spin`，避免隐藏后 JS 动画持续运行
+2. **移除无用导入** — App.jsx：移除 `motion` 导入（不再需要）
+3. **滚动检测优化** — Navbar.jsx：`setActiveSection` 增加 `activeSectionRef` 变更检测，避免每帧重复 setState
+4. **时间线代码去重** — Experience.jsx：提取 `Timeline` 子组件，消除教育/科研两个重复的时间线块
+
+### 审查发现但未修改的问题（低优先级）
+- 多个组件中重复的 `motion.div` 动画模式（可提取 FadeIn 组件，但项目规模小，暂不抽象）
+- `categoryColors` / `roleColors` / `tagColors` 分散在各组件（可在 portfolio.js 统一，暂不改动）
+- 首屏以下板块未使用懒加载（framer-motion 的 whileInView 已减少重复动画，影响有限）
+
+---
+
 ## 2026-05-07 — 替换默认 Vite favicon 为自定义网站图标
 
 **Git:** `69ab152`
