@@ -66,27 +66,27 @@ export const projects = [
   },
 ]
 
-export const experiences = [
+export const educations = [
   {
-    type: "research",
-    title: "国家级大创项目：深度学习求解偏微分方程",
-    org: "广东工业大学 · 主持",
-    period: "2024.12 - 至今",
-    description: "提出 ES-ScaDNN 框架，创新融合能量泛函与方差约束，Allen-Cahn 方程求解精度提升 67.2%。已发表 SCI 论文 2 篇。",
-  },
-  {
-    type: "education",
     title: "电子信息 · 硕士研究生",
     org: "西安电子科技大学",
     period: "2026.09 - 2029.06",
     description: "推免入学，211、双一流学科，研究方向为 AI for Science。",
   },
   {
-    type: "education",
     title: "计算机科学与技术 · 本科",
     org: "广东工业大学",
     period: "2022.09 - 2026.06",
     description: "GPA 4.12/5.00（专业前 5%），ESI 全球前 1‰。获国家奖学金、一等奖学金等。",
+  },
+]
+
+export const researches = [
+  {
+    title: "国家级大创项目：深度学习求解偏微分方程",
+    org: "广东工业大学 · 主持",
+    period: "2024.12 - 至今",
+    description: "提出 ES-ScaDNN 框架，创新融合能量泛函与方差约束，Allen-Cahn 方程求解精度提升 67.2%。已发表 SCI 论文 2 篇。",
   },
 ]
 
