@@ -1,45 +1,48 @@
 import { motion } from 'framer-motion'
-import { BookOpen } from 'lucide-react'
+import { ExternalLink } from 'lucide-react'
 import { publications } from '../data/portfolio'
 import SectionHeading from './SectionHeading'
 
-const roleColors = {
-  '学生一作': 'bg-primary-500 text-white',
-  '第三作者': 'bg-slate-500 text-white',
-}
-
 export default function Publications() {
   return (
-    <section id="publications" className="py-24 px-6 bg-slate-50">
+    <section id="publications" className="py-28 px-6">
       <div className="max-w-4xl mx-auto">
         <SectionHeading title="学术" accent="论文" subtitle="已发表的 SCI 期刊论文" />
 
-        <div className="space-y-6">
+        <div className="space-y-4">
           {publications.map((pub, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="group relative bg-white rounded-2xl border border-slate-100 p-6 hover:shadow-lg hover:shadow-primary-500/5 hover:border-primary-100 transition-all duration-300"
+              transition={{ duration: 0.5, delay: i * 0.08 }}
+              className="group relative flex gap-5 p-6 bg-white rounded-xl border border-black/[0.04] hover:border-accent-200/60 transition-all duration-300"
             >
-              <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 p-3 bg-primary-50 rounded-xl group-hover:bg-primary-100 transition-colors">
-                  <BookOpen className="text-primary-500" size={24} />
+              {/* Index number */}
+              <div className="flex-shrink-0 font-display text-3xl font-bold text-ink/[0.06] leading-none pt-0.5 select-none">
+                {String(i + 1).padStart(2, '0')}
+              </div>
+
+              <div className="flex-1 min-w-0">
+                <div className="flex flex-wrap items-center gap-2 mb-2.5">
+                  <span className={`px-2.5 py-0.5 rounded-md text-xs font-semibold ${
+                    pub.role === '学生一作'
+                      ? 'bg-accent-500 text-white'
+                      : 'bg-ink/10 text-ink-secondary'
+                  }`}>
+                    {pub.role}
+                  </span>
+                  <span className="text-xs text-ink-muted">{pub.journal}</span>
                 </div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex flex-wrap items-center gap-2 mb-2">
-                    <span className={`px-2.5 py-0.5 rounded-full text-xs font-semibold ${roleColors[pub.role] || 'bg-slate-200 text-slate-600'}`}>
-                      {pub.role}
-                    </span>
-                    <span className="text-xs text-slate-400">{pub.journal}</span>
-                  </div>
-                  <h3 className="text-base font-bold text-slate-800 mb-2 leading-snug">
-                    {pub.title}
-                  </h3>
-                  <p className="text-sm text-slate-500 leading-relaxed">{pub.brief}</p>
-                </div>
+                <h3 className="text-[15px] font-bold text-ink mb-2 leading-snug">
+                  {pub.title}
+                </h3>
+                <p className="text-sm text-ink-secondary leading-relaxed">{pub.brief}</p>
+              </div>
+
+              <div className="flex-shrink-0 self-center opacity-0 group-hover:opacity-100 transition-opacity">
+                <ExternalLink size={16} className="text-ink-muted" />
               </div>
             </motion.div>
           ))}

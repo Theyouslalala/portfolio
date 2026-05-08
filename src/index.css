@@ -7,28 +7,28 @@ html {
 }
 
 body {
-  @apply bg-white text-slate-800 font-sans antialiased;
+  @apply bg-surface text-ink font-sans antialiased;
 }
 
 ::selection {
-  @apply bg-violet-400/30;
+  @apply bg-accent-500/20;
 }
 
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-slate-100;
+  @apply bg-surface;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-slate-300 rounded-full hover:bg-slate-400 transition-colors;
+  @apply bg-ink-muted/40 rounded-full hover:bg-ink-muted/60 transition-colors;
 }
 
 .loading-screen {
-  @apply fixed inset-0 z-[9999] bg-white flex flex-col items-center justify-center;
-  transition: opacity 0.5s ease, visibility 0.5s ease;
+  @apply fixed inset-0 z-[9999] bg-surface flex flex-col items-center justify-center;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
 }
 
 .loading-screen.hidden {

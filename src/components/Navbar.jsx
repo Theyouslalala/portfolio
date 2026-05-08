@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
-import { Menu, X, Languages } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 
 const navItems = [
   { name: '关于', href: '#about' },
@@ -70,44 +70,43 @@ export default function Navbar() {
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-white/80 backdrop-blur-xl shadow-sm border-b border-slate-100/50'
+          ? 'bg-white/90 backdrop-blur-xl shadow-[0_1px_0_0_rgba(0,0,0,0.04)]'
           : 'bg-transparent'
       }`}
     >
-      <div className="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
-        <a href="#hero" className="text-lg font-extrabold bg-gradient-to-r from-primary-500 to-violet-500 bg-clip-text text-transparent">
-          WYH
+      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+        <a href="#hero" className={`text-xl font-display font-bold tracking-tight transition-colors ${
+          scrolled ? 'text-ink' : 'text-white'
+        }`}>
+          WYH<span className="text-accent-500">.</span>
         </a>
 
-        <ul className="hidden lg:flex items-center gap-0.5">
+        <ul className="hidden lg:flex items-center gap-1">
           {navItems.map(item => (
             <li key={item.href}>
               <a
                 href={item.href}
-                className={`px-3 py-1.5 rounded-full text-sm font-medium transition-all duration-200 ${
+                className={`px-3.5 py-1.5 rounded-lg text-[13px] font-medium tracking-wide transition-all duration-200 ${
                   activeSection === item.href.slice(1)
-                    ? 'bg-primary-500 text-white shadow-md shadow-primary-500/20'
-                    : 'text-slate-600 hover:text-primary-500 hover:bg-primary-50'
+                    ? scrolled
+                      ? 'text-accent-500 bg-accent-50'
+                      : 'text-white bg-white/15'
+                    : scrolled
+                      ? 'text-ink-secondary hover:text-ink hover:bg-surface-warm'
+                      : 'text-white/70 hover:text-white hover:bg-white/10'
                 }`}
               >
                 {item.name}
               </a>
             </li>
           ))}
-          <li>
-            <button
-              className="ml-2 px-3 py-1.5 rounded-full text-sm font-medium text-slate-400 hover:text-primary-500 hover:bg-primary-50 transition-all duration-200 flex items-center gap-1"
-              title="English (coming soon)"
-            >
-              <Languages size={15} />
-              <span className="text-xs">EN</span>
-            </button>
-          </li>
         </ul>
 
         <button
           onClick={(e) => { e.stopPropagation(); setMobileOpen(!mobileOpen) }}
-          className="lg:hidden p-2 rounded-lg hover:bg-slate-100 transition-colors"
+          className={`lg:hidden p-2 rounded-lg transition-colors ${
+            scrolled ? 'hover:bg-surface-warm text-ink' : 'hover:bg-white/10 text-white'
+          }`}
         >
           {mobileOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
@@ -117,7 +116,7 @@ export default function Navbar() {
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="lg:hidden bg-white/95 backdrop-blur-xl border-t border-slate-100 px-6 pb-4"
+          className="lg:hidden bg-white/95 backdrop-blur-xl border-t border-black/[0.04] px-6 pb-4"
         >
           {navItems.map(item => (
             <a
@@ -126,8 +125,8 @@ export default function Navbar() {
               onClick={() => setMobileOpen(false)}
               className={`block py-2.5 text-sm font-medium transition-colors ${
                 activeSection === item.href.slice(1)
-                  ? 'text-primary-500'
-                  : 'text-slate-600'
+                  ? 'text-accent-500'
+                  : 'text-ink-secondary'
               }`}
             >
               {item.name}

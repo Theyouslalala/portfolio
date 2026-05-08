@@ -1,126 +1,112 @@
 import { motion } from 'framer-motion'
-import { ChevronDown, Github, Mail, Sparkles } from 'lucide-react'
+import { ChevronDown, Github, Mail } from 'lucide-react'
 import { personalInfo } from '../data/portfolio'
-
-const particles = Array.from({ length: 20 }, (_, i) => ({
-  id: i,
-  x: (i * 37 + 13) % 100,
-  y: (i * 53 + 7) % 100,
-  size: (i % 4) + 2,
-  delay: (i * 0.3) % 5,
-  duration: 15 + (i % 10),
-}))
 
 export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-center overflow-hidden bg-ink"
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-indigo-600 via-violet-600 to-fuchsia-500">
-        <motion.div
-          animate={{ x: [0, 120, -60, 0], y: [0, -100, 80, 0], scale: [1, 1.3, 0.85, 1] }}
-          transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute top-1/4 left-1/4 w-96 h-96 bg-white/[0.07] rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{ x: [0, -100, 80, 0], y: [0, 120, -60, 0], scale: [1, 0.8, 1.15, 1] }}
-          transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute bottom-1/4 right-1/4 w-[28rem] h-[28rem] bg-fuchsia-400/15 rounded-full blur-3xl"
-        />
-        <motion.div
-          animate={{ x: [0, 80, -120, 0], y: [0, -80, 100, 0] }}
-          transition={{ duration: 25, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute top-1/2 right-1/3 w-80 h-80 bg-cyan-400/10 rounded-full blur-3xl"
-        />
-        {particles.map(p => (
+      {/* Subtle texture overlay */}
+      <div className="absolute inset-0 opacity-[0.03]" style={{
+        backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+      }} />
+
+      {/* Gradient accent light */}
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-accent-500/[0.08] rounded-full blur-[120px] -translate-y-1/3 translate-x-1/4" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-violet-500/[0.06] rounded-full blur-[100px] translate-y-1/3 -translate-x-1/4" />
+
+      <div className="relative z-10 max-w-6xl mx-auto px-6 w-full py-32">
+        <div className="max-w-3xl">
+          {/* Tag */}
           <motion.div
-            key={p.id}
-            className="absolute rounded-full bg-white/20"
-            style={{ left: `${p.x}%`, top: `${p.y}%`, width: p.size, height: p.size }}
-            animate={{ y: [0, -30, 0], opacity: [0.2, 0.6, 0.2] }}
-            transition={{ duration: p.duration, repeat: Infinity, delay: p.delay, ease: 'easeInOut' }}
-          />
-        ))}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="inline-flex items-center gap-2 mb-8"
+          >
+            <span className="w-2 h-2 rounded-full bg-accent-500 animate-pulse" />
+            <span className="text-sm font-medium text-white/50 tracking-widest uppercase">
+              AI for Science · 深度学习 · 大语言模型
+            </span>
+          </motion.div>
+
+          {/* Name */}
+          <motion.h1
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+            className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-bold text-white tracking-tight leading-[0.95] mb-6"
+          >
+            {personalInfo.name}
+            <span className="text-accent-500">.</span>
+          </motion.h1>
+
+          {/* Title */}
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="text-xl md:text-2xl text-white/60 font-light mb-4"
+          >
+            {personalInfo.title}
+          </motion.p>
+
+          {/* Tagline */}
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.65 }}
+            className="text-base text-white/35 leading-relaxed max-w-lg mb-12"
+          >
+            {personalInfo.tagline}
+          </motion.p>
+
+          {/* CTAs */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.8 }}
+            className="flex items-center gap-4"
+          >
+            <a
+              href="#projects"
+              className="group inline-flex items-center gap-2 px-7 py-3.5 bg-accent-500 text-white rounded-lg font-semibold text-sm hover:bg-accent-600 transition-all duration-300"
+            >
+              查看项目
+              <span className="group-hover:translate-x-0.5 transition-transform">&rarr;</span>
+            </a>
+            <a
+              href={personalInfo.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 border border-white/15 rounded-lg text-white/60 hover:text-white hover:border-white/30 hover:bg-white/5 transition-all duration-300"
+            >
+              <Github size={18} />
+            </a>
+            <a
+              href={`mailto:${personalInfo.email}`}
+              className="p-3 border border-white/15 rounded-lg text-white/60 hover:text-white hover:border-white/30 hover:bg-white/5 transition-all duration-300"
+            >
+              <Mail size={18} />
+            </a>
+          </motion.div>
+        </div>
       </div>
 
-      <div className="relative z-10 text-center text-white px-6 max-w-3xl">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/10 mb-8"
-        >
-          <Sparkles size={14} />
-          <span className="text-sm font-medium tracking-wide">AI for Science · 深度学习 · 大语言模型</span>
-        </motion.div>
-
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold mb-6 tracking-tight"
-        >
-          {personalInfo.name}
-        </motion.h1>
-
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-lg sm:text-xl md:text-2xl text-white/80 mb-4 font-light"
-        >
-          {personalInfo.title}
-        </motion.p>
-
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="text-sm sm:text-base md:text-lg text-white/55 mb-12 max-w-xl mx-auto leading-relaxed"
-        >
-          {personalInfo.tagline}
-        </motion.p>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="flex items-center justify-center gap-4"
-        >
-          <a
-            href="#projects"
-            className="px-8 py-3.5 bg-white text-violet-700 rounded-full font-semibold hover:shadow-xl hover:shadow-white/20 transition-all duration-300 hover:-translate-y-0.5 text-sm"
-          >
-            查看项目
-          </a>
-          <a
-            href={personalInfo.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="p-3.5 border border-white/25 rounded-full hover:bg-white/10 transition-all duration-300"
-          >
-            <Github size={20} />
-          </a>
-          <a
-            href={`mailto:${personalInfo.email}`}
-            className="p-3.5 border border-white/25 rounded-full hover:bg-white/10 transition-all duration-300"
-          >
-            <Mail size={20} />
-          </a>
-        </motion.div>
-      </div>
-
+      {/* Bottom scroll indicator */}
       <motion.a
         href="#about"
-        animate={{ y: [0, 10, 0] }}
+        animate={{ y: [0, 8, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/40 hover:text-white transition-colors"
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/25 hover:text-white/50 transition-colors"
       >
-        <ChevronDown size={28} />
+        <ChevronDown size={24} />
       </motion.a>
 
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent pointer-events-none" />
+      {/* Bottom fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-surface to-transparent pointer-events-none" />
     </section>
   )
 }

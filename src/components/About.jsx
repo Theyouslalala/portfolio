@@ -1,82 +1,84 @@
 import { motion } from 'framer-motion'
-import { GraduationCap, MapPin, BookOpen } from 'lucide-react'
+import { GraduationCap, MapPin } from 'lucide-react'
 import { personalInfo, about } from '../data/portfolio'
 import SectionHeading from './SectionHeading'
 
 export default function About() {
   return (
-    <section id="about" className="py-24 px-6">
+    <section id="about" className="py-28 px-6 bg-surface">
       <div className="max-w-6xl mx-auto">
         <SectionHeading title="关于" accent="我" subtitle="学术背景与研究方向" />
 
-        <div className="grid md:grid-cols-5 gap-12 items-start">
+        <div className="grid md:grid-cols-12 gap-8 items-start">
+          {/* Avatar - editorial offset */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.6 }}
-            className="md:col-span-2 flex justify-center"
+            className="md:col-span-4"
           >
-            <div className="relative">
-              <div className="w-56 h-56 md:w-64 md:h-64 rounded-3xl bg-gradient-to-br from-primary-400 to-violet-500 p-1">
-                <div className="w-full h-full rounded-3xl bg-slate-100 flex items-center justify-center overflow-hidden">
-                  {personalInfo.avatar ? (
-                    <img src={personalInfo.avatar} alt={personalInfo.name} className="w-full h-full object-cover" />
-                  ) : (
-                    <span className="text-6xl md:text-7xl font-extrabold bg-gradient-to-br from-primary-400 to-violet-500 bg-clip-text text-transparent">
+            <div className="relative aspect-square max-w-[260px]">
+              <div className="w-full h-full rounded-2xl overflow-hidden bg-surface-warm border border-black/[0.04]">
+                {personalInfo.avatar ? (
+                  <img src={personalInfo.avatar} alt={personalInfo.name} className="w-full h-full object-cover" />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center">
+                    <span className="text-7xl font-display font-bold text-ink/10">
                       {personalInfo.name.charAt(0)}
                     </span>
-                  )}
-                </div>
+                  </div>
+                )}
               </div>
-              <div className="absolute -top-4 -right-4 w-20 h-20 bg-accent-400/20 rounded-2xl -z-10" />
-              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-primary-400/20 rounded-full -z-10" />
+              {/* Decorative number */}
+              <div className="absolute -bottom-6 -right-6 font-display text-[6rem] font-bold leading-none text-accent-500/[0.08] select-none pointer-events-none">
+                01
+              </div>
             </div>
           </motion.div>
 
+          {/* Content */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="md:col-span-3"
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="md:col-span-8"
           >
-            <div className="flex items-center gap-2 mb-4">
-              <BookOpen className="text-primary-500" size={20} />
-              <h3 className="text-lg font-bold text-slate-800">简介</h3>
-            </div>
-            <p className="text-slate-600 leading-relaxed mb-8 whitespace-pre-line text-[15px]">
+            <p className="text-ink-secondary leading-[1.8] mb-10 text-[15px] whitespace-pre-line">
               {about.description}
             </p>
 
-            <div className="space-y-4">
+            <div className="grid sm:grid-cols-2 gap-4">
               {about.educations.map((edu, i) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, y: 15 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: '-80px' }}
-                  transition={{ duration: 0.4, delay: i * 0.1 }}
-                  className="flex items-start gap-3 p-4 bg-white rounded-2xl shadow-sm border border-slate-100 hover:shadow-md hover:border-primary-100 transition-all duration-300"
+                  transition={{ duration: 0.4, delay: 0.3 + i * 0.1 }}
+                  className="p-5 bg-white rounded-xl border border-black/[0.04] hover:border-accent-200 transition-all duration-300 group"
                 >
-                  <div className="p-2 bg-primary-50 rounded-xl mt-0.5">
-                    <GraduationCap className="text-primary-500" size={20} />
-                  </div>
-                  <div>
-                    <p className="font-bold text-slate-800 text-[15px]">{edu.school}</p>
-                    <p className="text-sm text-slate-600">{edu.major}</p>
-                    <p className="text-xs text-slate-400 mt-1">{edu.detail} · {edu.period}</p>
+                  <div className="flex items-start gap-3">
+                    <div className="p-2 bg-accent-50 rounded-lg mt-0.5 group-hover:bg-accent-100 transition-colors">
+                      <GraduationCap className="text-accent-500" size={18} />
+                    </div>
+                    <div>
+                      <p className="font-semibold text-ink text-[15px]">{edu.school}</p>
+                      <p className="text-sm text-ink-secondary">{edu.major}</p>
+                      <p className="text-xs text-ink-muted mt-1">{edu.detail} · {edu.period}</p>
+                    </div>
                   </div>
                 </motion.div>
               ))}
 
-              <div className="flex items-center gap-3 p-4 bg-white rounded-2xl shadow-sm border border-slate-100">
-                <div className="p-2 bg-accent-400/10 rounded-xl">
-                  <MapPin className="text-accent-500" size={20} />
+              <div className="p-5 bg-white rounded-xl border border-black/[0.04] flex items-center gap-3">
+                <div className="p-2 bg-surface-warm rounded-lg">
+                  <MapPin className="text-ink-muted" size={18} />
                 </div>
                 <div>
-                  <p className="text-sm text-slate-500">所在地</p>
-                  <p className="font-semibold text-slate-800">{personalInfo.location}</p>
+                  <p className="text-xs text-ink-muted">所在地</p>
+                  <p className="font-semibold text-ink text-[15px]">{personalInfo.location}</p>
                 </div>
               </div>
             </div>
