@@ -19,6 +19,19 @@ export default function Hero() {
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 w-full py-32">
         <div className="max-w-3xl">
+          {/* Notice Banner */}
+          {personalInfo.notice && (
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              className="inline-flex items-center gap-2 px-4 py-2 mb-6 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-300 text-xs sm:text-sm font-medium backdrop-blur-md shadow-lg shadow-amber-500/5"
+            >
+              <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
+              <span>{personalInfo.notice}</span>
+            </motion.div>
+          )}
+
           {/* Tag */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}

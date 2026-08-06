@@ -9,8 +9,8 @@ export default function Footer() {
         <p className="text-sm text-white/30">
           &copy; {year} {personalInfo.name}
         </p>
-        <p className="text-xs text-white/15">
-          Built with React + Tailwind CSS
+        <p className="text-xs text-white/20">
+          🚧 网站处于施工迭代阶段 · 内容仅供参考
         </p>
       </div>
     </footer>

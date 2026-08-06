@@ -8,6 +8,7 @@ export const personalInfo = {
   email: "",
   github: "https://github.com/theyouslalala",
   location: "中国",
+  notice: "🚧 本网站还在施工中，信息内容仅供参考",
 }
 
 export const about = {
@@ -26,7 +27,7 @@ export const about = {
     {
       school: "广东工业大学",
       major: "计算机科学与技术 · 本科",
-      detail: "ESI 全球前 1‰ · GPA 4.12/5.00（专业前 5%）",
+      detail: "ESI 全球前 1‰ · GPA 4.16/5.00（专业前 5%）",
       period: "2022.09 - 2026.06",
     },
   ],
@@ -77,7 +78,7 @@ export const educations = [
     title: "计算机科学与技术 · 本科",
     org: "广东工业大学",
     period: "2022.09 - 2026.06",
-    description: "GPA 4.12/5.00（专业前 5%），获国家奖学金、一等奖学金等。",
+    description: "GPA 4.16/5.00（专业前 5%），获国家奖学金、一等奖学金等。",
   },
 ]
 
@@ -106,10 +107,10 @@ export const publications = [
 ]
 
 export const honors = [
+  { title: "优秀毕业生", year: "2026" },
   { title: "本科生国家奖学金", year: "2025" },
   { title: "美国大学生数学建模竞赛 Honorable Mention（队长）", year: "2025, 2024" },
   { title: "全国大学生统计建模竞赛 广东赛区一等奖 / 国家三等奖", year: "2025" },
-  { title: "全国大学生统计建模竞赛 广东赛区二等奖（队长）", year: "2024" },
   { title: "全国大学生数学建模竞赛 广东赛区二等奖（队长）", year: "2024, 2023" },
   { title: "蓝桥杯 C/C++ 省赛二等奖", year: "2025, 2024" },
   { title: "睿抗机器人开发者大赛 广东省三等奖", year: "2025, 2024" },
