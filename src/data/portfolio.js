@@ -27,7 +27,7 @@ export const about = {
     {
       school: "广东工业大学",
       major: "计算机科学与技术 · 本科",
-      detail: "ESI 全球前 1‰ · GPA 4.16/5.00（专业前 5%）",
+      detail: "ESI 全球前 1‰ · GPA 4.16/5.00 · 排名 5/165 · 校优秀毕业生",
       period: "2022.09 - 2026.06",
     },
   ],
@@ -72,13 +72,13 @@ export const educations = [
     title: "电子信息 · 硕士研究生",
     org: "西安电子科技大学",
     period: "2026.09 - 2029.06",
-    description: "推免入学，研究方向为多模态 AI 与大语言模型。",
+    description: "研究方向为多模态 AI 与大语言模型。",
   },
   {
     title: "计算机科学与技术 · 本科",
     org: "广东工业大学",
     period: "2022.09 - 2026.06",
-    description: "GPA 4.16/5.00（专业前 5%），获国家奖学金、一等奖学金等。",
+    description: "专业排名 5/165（GPA 4.16/5.00），获本科生国家奖学金、校优秀毕业生、一等奖学金等。",
   },
 ]
 
