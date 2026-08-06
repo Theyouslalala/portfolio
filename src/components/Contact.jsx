@@ -7,13 +7,13 @@ const links = [
   {
     label: '邮箱',
     value: contact.email,
-    href: `mailto:${contact.email}`,
+    href: contact.email ? `mailto:${contact.email}` : null,
     icon: Mail,
     color: 'bg-red-50 text-red-500',
   },
   {
     label: 'GitHub',
-    value: contact.github.replace('https://', ''),
+    value: contact.github ? contact.github.replace('https://', '') : '',
     href: contact.github,
     icon: Github,
     color: 'bg-ink/[0.06] text-ink',
@@ -25,7 +25,7 @@ const links = [
     icon: MessageCircle,
     color: 'bg-emerald-50 text-emerald-500',
   },
-]
+].filter((link) => link.value)
 
 function ContactCard({ link, index }) {
   const Icon = link.icon
@@ -68,7 +68,7 @@ export default function Contact() {
       <div className="max-w-4xl mx-auto">
         <SectionHeading title="联系" accent="我" subtitle="欢迎与我交流，期待你的来信" />
 
-        <div className="grid sm:grid-cols-3 gap-4">
+        <div className={`grid gap-4 ${links.length === 1 ? 'max-w-xs mx-auto' : 'sm:grid-cols-3'}`}>
           {links.map((link, i) => (
             <ContactCard key={link.label} link={link} index={i} />
           ))}

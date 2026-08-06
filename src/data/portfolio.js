@@ -2,20 +2,20 @@
 
 export const personalInfo = {
   name: "Wangyuhan",
-  title: "电子信息硕士 · AI4S 方向",
-  tagline: "深耕 AI for Science，以深度学习求解复杂物理方程",
+  title: "电子信息硕士 · 多模态 AI 方向",
+  tagline: "关注多模态 AI 与大语言模型（MLLMs），不断探索深度学习算法",
   avatar: "",
-  email: "your-email@example.com",
+  email: "",
   github: "https://github.com/theyouslalala",
   location: "中国",
 }
 
 export const about = {
-  description: `我是西安电子科技大学电子信息专业硕士研究生（推免，211，双一流学科），本科毕业于广东工业大学计算机科学与技术专业（ESI 全球前 1‰）。
+  description: `我是西安电子科技大学电子信息专业硕士研究生（推免），本科毕业于广东工业大学计算机科学与技术专业。
 
-研究方向聚焦 AI for Science (AI4S)，利用深度学习方法求解复杂偏微分方程，已在 SCI 期刊发表论文。
+硕士研究方向聚焦多模态 AI（Multimodal AI）与大语言模型（MLLMs）。
 
-同时热衷于 LLM 技术探索，完成从模型搭建到强化学习后训练的全链路实践。`,
+本科阶段曾开展深度学习求解偏微分方程（AI4S）相关研究并发表 SCI 期刊论文。目前正持续学习与实践大语言模型复现与后训练技术。`,
   educations: [
     {
       school: "西安电子科技大学",
@@ -57,7 +57,7 @@ export const projects = [
     period: "2026.03 - 至今",
   },
   {
-    title: "AI4S — 深度学习求解偏微分方程",
+    title: "AI4S — 深度学习求解偏微分方程（本科科研）",
     description: "提出 ES-ScaDNN 框架，利用能量泛函直接优化求解 Allen-Cahn 方程，精度提升 67.2%。设计缩放层与方差正则化项确保解的物理意义。参与 EM-NormResNet 模型设计，用于玻色-爱因斯坦凝聚基态问题求解。",
     tags: ["AI4S", "PDE", "Energy Method", "DNN"],
     link: "https://github.com/theyouslalala",
@@ -71,13 +71,13 @@ export const educations = [
     title: "电子信息 · 硕士研究生",
     org: "西安电子科技大学",
     period: "2026.09 - 2029.06",
-    description: "推免入学，211、双一流学科，研究方向为 AI for Science。",
+    description: "推免入学，研究方向为多模态 AI 与大语言模型。",
   },
   {
     title: "计算机科学与技术 · 本科",
     org: "广东工业大学",
     period: "2022.09 - 2026.06",
-    description: "GPA 4.12/5.00（专业前 5%），ESI 全球前 1‰。获国家奖学金、一等奖学金等。",
+    description: "GPA 4.12/5.00（专业前 5%），获国家奖学金、一等奖学金等。",
   },
 ]
 
@@ -119,7 +119,7 @@ export const honors = [
 ]
 
 export const contact = {
-  email: personalInfo.email,
+  email: "",
   github: personalInfo.github,
-  wechat: "your-wechat-id",
+  wechat: "",
 }

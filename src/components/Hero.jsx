@@ -28,7 +28,7 @@ export default function Hero() {
           >
             <span className="w-2 h-2 rounded-full bg-accent-500 animate-pulse" />
             <span className="text-sm font-medium text-white/50 tracking-widest uppercase">
-              AI for Science · 深度学习 · 大语言模型
+              多模态 AI · 深度学习 · 大语言模型
             </span>
           </motion.div>
 
@@ -85,12 +85,14 @@ export default function Hero() {
             >
               <Github size={18} />
             </a>
-            <a
-              href={`mailto:${personalInfo.email}`}
-              className="p-3 border border-white/15 rounded-lg text-white/60 hover:text-white hover:border-white/30 hover:bg-white/5 transition-all duration-300"
-            >
-              <Mail size={18} />
-            </a>
+            {personalInfo.email && (
+              <a
+                href={`mailto:${personalInfo.email}`}
+                className="p-3 border border-white/15 rounded-lg text-white/60 hover:text-white hover:border-white/30 hover:bg-white/5 transition-all duration-300"
+              >
+                <Mail size={18} />
+              </a>
+            )}
           </motion.div>
         </div>
       </div>
